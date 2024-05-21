@@ -28,9 +28,11 @@
                 <tbody>
                     <?php
                         foreach($subcategories as $subcategory) {
-                            echo "<tr>";
+                            echo "<tr class='capitalize'>";
                                 echo "<td class='spacing'>".$subcategory['id']."</td>";
-                                echo "<td class='spacing'>".$subcategory['name']."</td>";
+                                echo "<td class='spacing'>";
+                                echo $subcategory['name'];
+                                echo "</td>";
                                 foreach ($categories as $category) {
                                     if($subcategory['category_id'] == $category['id']) {
                                         echo "<td class='spacing'>".$category['name']."</td>";
@@ -58,5 +60,15 @@
 
 <?php
     include_once __DIR__. '/../../layout/footer.php';
+?>
+<?php
+    $status = isset($_GET['subcat_delstatus']) ? $_GET['subcat_delstatus'] : null;
+    if($status != null) {
+        if($status == 'true') {
+            echo "<script>alert('Successfully deleted')</script>";
+        }else {
+            echo "<script>alert('Cannot be deleted')</script>";
+        }
+    }
 
 ?>

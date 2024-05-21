@@ -71,11 +71,12 @@
                 $result = $statement1->fetchAll(PDO::FETCH_ASSOC);
                 if(sizeof($result) == 0) {
                     $this->connect = Database::connect();
-                    $mysql = 'delete from categories where id=:deleted_id';
+                    $mysql = 'update categories set archive=1 where id=:id';
                     $statement2 = $this->connect->prepare($mysql);
                     $statement2->bindParam(':id',$delete_id);
-                    $statement2->execute();
+                    return $statement2->execute();
                 }
+                return false;
             }
         }
             

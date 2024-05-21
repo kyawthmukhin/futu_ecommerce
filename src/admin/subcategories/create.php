@@ -37,7 +37,7 @@
     }
 ?>
 <div class="max-w-md mx-auto">
-        <h1 class="text-3xl pt-14 pb-10">Add new category</h1>
+        <h1 class="text-3xl pt-14 pb-10">Add new Subcategory</h1>
         <div class="bg-palegray-0 rounded-e-md shadow-lg shadow-slate-500">
             <form method="post">
                 <div class="px-12 pt-8">
@@ -54,7 +54,7 @@
                     <span class="text-red-500"><?php if(isset($select_category_error)) echo $select_category_error ?></span>
                 </div>
                 <div class="px-12 pt-8">
-                    <label for="" class="w-full block mb-5 text-[20px] font-semibold">Category Name * </label>
+                    <label for="" class="w-full block mb-5 text-[20px] font-semibold">Subcategory Name * </label>
                     <input type="text" name="subcategory" class="w-full border border-gray-400 block p-2 rounded-md" id="">
                     <span class="text-red-500"><?php if(isset($subcategory_error)) echo $subcategory_error ?></span>
                 </div>

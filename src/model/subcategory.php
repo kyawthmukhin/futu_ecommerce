@@ -50,5 +50,23 @@
             $statement->bindParam(':id', $id);
             $statement->execute();
         }
+        function delete_subcategory_id($del_id) {
+            $this->connect = Database::connect();
+            $mysql = 'select * from products where subcategory_id = :del_id';
+            $statement1 = $this->connect->prepare($mysql);
+            $statement1->bindParam(':del_id',$del_id);
+            if($statement1->execute()) {
+                $result = $statement1->fetchAll(PDO::FETCH_ASSOC);
+                if(sizeof($result) == 0) {
+                    $this->connect = Database::connect();
+                    $mysql = 'update sub_categories set archive=1 where id=:del_id';
+                    $statement2 = $this->connect->prepare($mysql);
+                    $statement2->bindParam(':del_id',$del_id);
+                    return $statement2->execute();
+                }
+                return false;
+            }
+            
+        }
     }
 ?>

@@ -5,20 +5,6 @@
     $categories = $categoryController->get_category();
 ?>
 
-    <div>
-        <?php
-            if(isset($_GET['status'])) {   
-                echo'<div class="flex w-full items-center justify-between pt-3">';
-                    echo "<p class='w-3/4 text-center p-3 bg-red-600 rounded-md text-white'>";
-                        echo "Cannot be Deleted";
-                    echo "</p>";
-                    echo "<a href='./index.php' class='border border-gray-500 rounded-md p-3 hover:bg-blue-600 hover:text-white'>Back to Category</a>";
-                echo '</div>';
-            }
-
-        ?>
-    </div>
-
     <main class=" mx-12">
         <div class="py-5">
             <h2 class="text-[30px] font-semibold my-8">Categories Information</h2>
@@ -36,7 +22,7 @@
                 <tbody>
                     <?php
                         foreach($categories as $category) {
-                            echo "<tr>";
+                            echo "<tr class='capitalize'>";
                                 echo "<td class='spacing'>".$category['id']."</td>";
                                 echo "<td class='spacing'>".$category['name']."</td>";
                                 echo "<td class='spacing flex items-center justify-center'>";
@@ -60,4 +46,16 @@
 
 <?php
     include_once __DIR__. '/../../layout/footer.php';
+?>
+
+<?php
+    $cate_delete_status = isset($_GET['cate_delete_status']) ? $_GET['cate_delete_status'] : null;
+    if($cate_delete_status !== null) {
+        if($cate_delete_status == 'true') {
+            echo "<script> alert('Successfully Deleted!') </script>";
+        } else {
+            echo "<script> alert('Cannot Be Deleted!') </script>";
+        }
+    }
+
 ?>

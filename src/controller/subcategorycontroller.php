@@ -22,6 +22,9 @@
         function update_subcategory_id($category_id,$subcategory_name,$id) {
             return $this->subcategory->update_subcategory_id($category_id,$subcategory_name,$id);
         }
+        function delete_subcategory_id($del_id) {
+            return $this->subcategory->delete_subcategory_id($del_id);
+        }
      }
 
 ?>
